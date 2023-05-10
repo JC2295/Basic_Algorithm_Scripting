@@ -1,15 +1,22 @@
 function truncateString(str, num) {
 
-  let arr = [];
+  if (str.length > num) {
 
-  arr = str.split("");
+    let str2 = str.slice(0, num);
 
-  if (arr.length > num) {
+    str2 = str2 + "..."
 
-    arr.splice((num - 1), (str.length - num - 1));
+    console.log(str2);
+
+    return str2;
   }
+  else {
 
-  return str;
+    return str;
+
+  }
 }
 
 truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+//Challenge Complete
