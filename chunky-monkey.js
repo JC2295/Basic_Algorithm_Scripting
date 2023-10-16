@@ -2,31 +2,23 @@ function chunkArrayInGroups(arr, size) {
 
   let newArr = [];
 
-  let chunks = Math.floor(arr.length / size);
+  let chunks = Math.floor(arr.length / size); 
 
-  console.log(chunks);
+  let remainderChunkSize = arr.length % size;
 
-  let rem = arr.length % size;
-
-  for (let i = 0; i < chunks; i += size) { // cycle through full chunks exluding the remainder.
-
-    newArr.push(arr.slice((i),((i + size))));
-    
+  for(let i = size; i <= (chunks*size); i += size){
+    newArr.push(arr.slice(i - size, i))
+    console.log(i);
   }
-
-  if(rem == 0){
-    
-    console.log(newArr);
-    
-    return newArr;
   
+  if(remainderChunkSize > 0){
+    newArr.push(arr.slice((arr.length - remainderChunkSize), arr.length))
   }
-
-  newArr.push(arr.slice(arr.length - rem));
-
-  console.log(newArr);
+  
+  console.log(newArr)
 
   return newArr;
+
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
