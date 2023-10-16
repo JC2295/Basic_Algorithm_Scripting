@@ -1,23 +1,52 @@
 function mutation(arr) {
 
-  let arr1 = arr[0].toLowerCase();
+  let str1 = arr[0].toString();
 
-  let arr2 = arr[1].toLowerCase();
+  console.log(str1);
 
-  console.log(arr1);
+  let str2 = arr[1].toString();
 
-  console.log(arr2);
+  let trace = [];
 
-  for (let i = 0; i < arr2.length; i++) {
+  let check = [];
 
-    for (let j = 0; j < arr1.length; j++) {
+  for(let i = 0; i < str2.length; i++) {
+      trace.push(0);
+      check.push(1);
+  }
 
-      //come back to this one
+  for(let i = 0; i < str1.length; i++){
+    
+    for(let j = 0; j < str2.length; j++){
+      
+      let pattern = new RegExp(`\[${str2[j]}\]`, "ig");
+
+      if(str1[i].match(pattern)){
+        trace[j] = 1;
+      }
+      else{
+        continue;
+      }
 
     }
 
   }
-  return true;
+
+  let strace = trace.toString();
+
+  let scheck  = check.toString();
+
+  console.log(strace)
+
+  console.log(scheck)
+
+  if(scheck === strace){
+    return true;
+  }
+  else{
+    return false;
+  }
+
 }
 
 mutation(["hello", "hey"]);
